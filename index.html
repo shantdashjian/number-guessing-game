@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <title>Number Guessing Game</title>
+  <script src="scripts/game.js" defer></script>
 </head>
 <body>
     <h1>Number Guessing Game</h1>
     <p>We selected a number between 1 and 100. Could you guess it in 10 turns or less?
     We'll tell you if you guessed too low or too high.</p>
-    <label>Enter a guess: </label><input type="text"> <button>Submit Guess</button>
+    <label>Enter a guess: </label><input type="text" id="guess-input"> <button id="guess-button" type="button">Submit
+    Guess</button>
     <p>Previous guesses:</p>
-    <p>Congratulations! You win!</p>
+    <p id="result"></p>
     <button>Start New Game</button>
 </body>
 </html>
