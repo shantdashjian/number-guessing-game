@@ -1,28 +1,37 @@
-// guess a number
-let answer = Math.floor((Math.random() * (100 - 0)) + 1);
-// add ability for button to check guess against number
-const guessButton = document.querySelector('#guess-button');
-console.log(answer);
-let previousGuesses = [];
 const MAX_GUESSES = 10;
-let guessesLeft = MAX_GUESSES;
-//    and give feedback
+let answer;
+let previousGuesses;
+let guessesLeft;
+
+const guessInput = document.querySelector('#guess-input');
+const guessButton = document.querySelector('#guess-button');
+const previousGuessesPara = document.querySelector('#previous-guesses');
+const resultPara = document.querySelector('#result');
+const restartButton = document.querySelector('#start-new-game');
+guessButton.onclick = checkGuess;
+restartButton.onclick = startNewGame;
+
+startNewGame();
+
+function prepareToRestart() {
+    guessInput.setAttribute('disabled', 'true');
+    guessButton.setAttribute('disabled', 'true');
+    restartButton.removeAttribute('hidden');
+}
+
 function checkGuess() {
-    const guessInput = document.querySelector('#guess-input');
     const guessValue = Number(guessInput.value);
     previousGuesses.push(guessValue);
-    guessInput.value = '';
-    const resultPara = document.querySelector('#result');
-    let resultText;
     guessesLeft--;
-    const previousGuessesPara = document.querySelector('#previous-guesses');
-    const previousGuessesText = previousGuesses.join(' ');
+    guessInput.value = '';
+    let resultText;
 
+    const previousGuessesText = previousGuesses.join(' ');
     previousGuessesPara.textContent = `Previous guesses: ${previousGuessesText}`;
+
     if (guessValue === answer) {
         resultText = 'Congratulations! You win!';
-        guessInput.setAttribute('disabled', 'true');
-        guessButton.setAttribute('disabled', 'true');
+        prepareToRestart();
     } else if (guessesLeft > 0) {
         if (guessValue < answer) {
             resultText = 'Too low';
@@ -31,12 +40,19 @@ function checkGuess() {
         }
     } else {
         resultText = '!!!GAME OVER!!!';
-        guessInput.setAttribute('disabled', 'true');
-        guessButton.setAttribute('disabled', 'true');
+        prepareToRestart();
     }
 
     resultPara.textContent = resultText;
-
 }
-guessButton.onclick = checkGuess;
 
+function startNewGame() {
+    guessInput.removeAttribute('disabled');
+    guessButton.removeAttribute('disabled');
+    restartButton.setAttribute('hidden', 'true');
+    answer = Math.floor((Math.random() * (100 - 0)) + 1);
+    previousGuesses = [];
+    guessesLeft = MAX_GUESSES;
+    previousGuessesPara.textContent = '';
+    resultPara.textContent = '';
+}
