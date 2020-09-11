@@ -14,8 +14,8 @@ restartButton.onclick = startNewGame;
 startNewGame();
 
 function prepareToRestart() {
-    guessInput.setAttribute('disabled', 'true');
-    guessButton.setAttribute('disabled', 'true');
+    guessInput.disabled = true;
+    guessButton.disabled = true;
     restartButton.removeAttribute('hidden');
 }
 
@@ -45,11 +45,13 @@ function checkGuess() {
     }
 
     resultPara.textContent = resultText;
+    guessInput.focus();
 }
 
 function startNewGame() {
-    guessInput.removeAttribute('disabled');
-    guessButton.removeAttribute('disabled');
+    guessInput.disabled = false;
+    guessInput.focus();
+    guessButton.disabled = false;
     restartButton.setAttribute('hidden', 'true');
     answer = Math.floor((Math.random() * (100 - 0)) + 1);
     previousGuesses = [];
