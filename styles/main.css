@@ -1,0 +1,21 @@
+html {
+    font-family: 'Play', sans-serif;
+    background-color: aliceblue;
+}
+
+#main {
+    margin: 0 auto;
+    width: 70%;
+}
+
+#result {
+    text-align: center;
+}
+
+.wrong-or-game-over {
+    background-color: red;
+}
+
+.win {
+    background-color: green;
+}

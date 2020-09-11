@@ -31,12 +31,13 @@ function checkGuess() {
 
     if (guessValue === answer) {
         resultText = 'Congratulations! You win!';
+        resultPara.className = 'win';
         prepareToRestart();
     } else if (guessesLeft > 0) {
         if (guessValue < answer) {
-            resultText = 'Too low';
+            resultText = 'Wrong! Too low!';
         } else if (guessValue > answer) {
-            resultText = 'Too high';
+            resultText = 'Wrong! Too high!';
         }
     } else {
         resultText = '!!!GAME OVER!!!';
@@ -55,4 +56,5 @@ function startNewGame() {
     guessesLeft = MAX_GUESSES;
     previousGuessesPara.textContent = '';
     resultPara.textContent = '';
+    resultPara.className = 'wrong-or-game-over';
 }
