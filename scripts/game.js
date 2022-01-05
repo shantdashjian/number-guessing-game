@@ -40,7 +40,7 @@ function checkGuess() {
             resultText = 'Wrong! Too high!';
         }
     } else {
-        resultText = '!!!GAME OVER!!!';
+        resultText = '!!!GAME OVER!!! It was ' + answer;
         prepareToRestart();
     }
 
