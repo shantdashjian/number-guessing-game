@@ -53,7 +53,7 @@ function startNewGame() {
     guessInput.focus();
     guessButton.disabled = false;
     restartButton.setAttribute('hidden', 'true');
-    answer = Math.floor((Math.random() * (50 - 30)) + 1);
+    answer = Math.floor((Math.random() * (100 - 0)) + 1);
     previousGuesses = [];
     guessesLeft = MAX_GUESSES;
     previousGuessesPara.textContent = '';
